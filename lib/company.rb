@@ -53,4 +53,16 @@ class Company
     end
     results
   end
+
+  def find_employee_by_id(id)
+    @employees.select do |employee|
+      employee.employee_id == id
+    end.flatten.first
+  end
+
+  def find_project_by_id(id)
+    @projects.select do |project|
+      project.project_id == id
+    end.flatten.first
+  end
 end
