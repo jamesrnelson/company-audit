@@ -59,4 +59,10 @@ class Company
       employee.employee_id == id
     end.flatten.first
   end
+
+  def find_project_by_id(id)
+    @projects.select do |project|
+      project.project_id == id
+    end.flatten.first
+  end
 end

@@ -97,9 +97,9 @@ class CompanyTest < Minitest::Test
   def test_can_find_project_by_project_id
     company = Company.new
     company.load_projects('./data/projects.csv')
-    project = company.find_project_by_id(project_id)
+    project = company.find_project_by_id 1
 
     assert_instance_of Project, project
-    assert_equal ___, 
+    assert_equal 'Widgets', project.name
   end
 end
