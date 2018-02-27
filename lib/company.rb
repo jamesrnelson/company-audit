@@ -32,7 +32,7 @@ class Company
         results[:error] = 'bad data'
         break
       else
-        @employees << Project.new(data[0], data[1], data[2], data[3])
+        @projects << Project.new(data[0], data[1], data[2], data[3])
       end
     end
     results
