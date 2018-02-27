@@ -11,9 +11,8 @@ class Company
   end
 
   def load_employees(filepath)
-    CSV.foreach(filepath, headers: true, header_converters: :symbol) do |data|
-      @employees << Employee.new(data)
+    CSV.foreach(filepath, Hash.new) do |data|
+      @employees << Employee.new(data[0], data[1], data[2], data[3], data[4])
     end
   end
-
 end

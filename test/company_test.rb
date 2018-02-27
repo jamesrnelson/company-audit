@@ -19,11 +19,10 @@ class CompanyTest < Minitest::Test
 
   def test_loads_employees
     company = Company.new
-
     assert_equal [], company.employees
-
     company.load_employees('./data/employees.csv')
     refute company.employees.empty?
+    binding.pry
   end
 
   def test_raises_error_if_bad_data
