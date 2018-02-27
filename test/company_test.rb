@@ -76,4 +76,30 @@ class CompanyTest < Minitest::Test
     assert_equal expected, company.load_timesheets('./data/bad_timesheets.csv')
     assert company.timesheets.empty?
   end
+
+  def test_can_find_employee_by_id
+    company = Company.new
+    company.load_employees('./data/employees.csv')
+    employee = company.find_employee_by_id 1
+
+    assert_instance_of Employee, employee
+    assert_equal 'Susan Smith', employee.name
+  end
+
+  def test_find_employee_returns_nil_if_no_match
+    company = Company.new
+    company.load_employees('./data/employees.csv')
+    employee = company.find_employee_by_id 5
+
+    assert_nil employee
+  end
+
+  def test_can_find_project_by_project_id
+    company = Company.new
+    company.load_projects('./data/projects.csv')
+    project = company.find_project_by_id(project_id)
+
+    assert_instance_of Project, project
+    assert_equal ___, 
+  end
 end

@@ -53,4 +53,10 @@ class Company
     end
     results
   end
+
+  def find_employee_by_id(id)
+    @employees.select do |employee|
+      employee.employee_id == id
+    end.flatten.first
+  end
 end
