@@ -53,7 +53,27 @@ class CompanyTest < Minitest::Test
 
     expected = { success: false, error: 'bad data' }
 
-    assert_equal expected, company.load_employees('./data/bad_projects.csv')
+    assert_equal expected, company.load_projects('./data/bad_projects.csv')
     assert company.projects.empty?
+  end
+
+  def test_loads_timesheets
+    company = Company.new
+    assert_equal [], company.timesheets
+
+    expected = { success: true, error: nil }
+
+    assert_equal expected, company.load_timesheets('./data/timesheets.csv')
+    assert_equal 25, company.timesheets.length
+  end
+
+  def test_raises_error_if_bad_timesheet_data
+    company = Company.new
+    assert_equal [], company.timesheets
+
+    expected = { success: false, error: 'bad data' }
+
+    assert_equal expected, company.load_timesheets('./data/bad_timesheets.csv')
+    assert company.timesheets.empty?
   end
 end
